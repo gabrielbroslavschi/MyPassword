@@ -8,7 +8,7 @@
   font-family: "Poppins", sans-serif;
 }
 
-body {
+.main-container {
   background: linear-gradient(
       217deg,
       rgba(209, 0, 216, 0.7),
@@ -138,3 +138,5 @@ form input[type="submit"]:hover {
   font-size: 0.8rem;
   text-align: center;
 }
+
+
