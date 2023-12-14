@@ -60,6 +60,10 @@ function Signup() {
           </div>
 
           <input type="submit" value="Continue"></input>
+
+          <span>
+            Already have an account? <a href={`/`}>Sign in.</a>
+          </span>
         </form>
       </div>
 
@@ -67,12 +71,13 @@ function Signup() {
         <div className={style["container-text"]}>
           <form>
             <h2>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam
-              reiciendis provident saepe quisquam fugit aut fuga sit voluptas!
-              Asperiores soluta qui sint laboriosam, expedita tenetur a nisi
-              eaque saepe iusto dolore molestias quos exercitationem, eos iure,
-              accusamus facilis repellat quaerat impedit corrupti magnam aliquam
-              et? Qui libero deserunt vitae totam.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita
+              impedit, exercitationem quidem cum quasi reprehenderit asperiores
+              earum quae architecto delectus eius quos odio, excepturi unde
+              veniam repudiandae, recusandae perferendis voluptatibus voluptatum
+              ea sapiente. Laborum est praesentium necessitatibus sequi dicta
+              eligendi amet asperiores? Tenetur, labore sapiente? Cumque ad sint
+              magni voluptate.
             </h2>
           </form>
         </div>

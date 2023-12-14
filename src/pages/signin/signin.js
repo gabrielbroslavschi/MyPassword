@@ -1,9 +1,21 @@
 import React from "react";
 import style from "./signin.module.css";
 
+import { useNavigate } from 'react-router-dom';
+
 function Signup() {
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
+
+  const navigate = useNavigate(); // Use sem renomear
+
+  const userId = "123";
+  const token = "asudhauhsduh";
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    navigate(`/signup/${userId}/${token}`);
+  }
 
   const handleChangeUsername = (value) => {
     setUsername(value.target.value);
@@ -42,12 +54,12 @@ function Signup() {
             <div className={style.underline}></div>
           </div>
 
-          <input type="submit" value="Continue"></input>
+          <input type="submit" value="Continue" onClick={handleLogin}></input>
         </form>
 
         <div className={style.footer}>
           <span>
-            Do not have an account? <a href="google.com">Sign up.</a>
+            Do not have an account? <a href="/signup">Sign up.</a>
           </span>
         </div>
       </main>

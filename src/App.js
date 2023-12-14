@@ -1,11 +1,12 @@
+
+import Rotas from './routes/route';
+
 import './App.css';
-import Signin from './signin/signin';
-import Signup from './singup/signup';
 
 function App() {
-  return (
-    <Signin/>
-  );
+
+  return <Rotas />;
+
 }
 
 export default App;
