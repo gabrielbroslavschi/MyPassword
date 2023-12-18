@@ -3,6 +3,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Signin from "../pages/signin/signin"
 import Signup from '../pages/singup/signup';
+import Home from '../pages/Home/home';
 
 function Rotas() {
   return (
@@ -11,6 +12,7 @@ function Rotas() {
         <Route path="/" element={<Signin />} />
         {/* <Route path="/signup/:userId/:token" element={<Signup />} /> */}
         <Route path="/signup" element={<Signup />} />
+        <Route path="/home/:username/:password" element={<Home />} />
       </Routes>
     </Router>
   );

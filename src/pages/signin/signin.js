@@ -7,14 +7,14 @@ function Signup() {
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
 
-  const navigate = useNavigate(); // Use sem renomear
-
-  const userId = "123";
-  const token = "asudhauhsduh";
+  const navigate = useNavigate(); 
 
   const handleLogin = (e) => {
-    e.preventDefault();
-    navigate(`/signup/${userId}/${token}`);
+
+    if(username === "teste" && password === "1234"){
+      e.preventDefault();
+      navigate(`/home/${username}/${password}`);
+    }
   }
 
   const handleChangeUsername = (value) => {
