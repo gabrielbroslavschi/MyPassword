@@ -1,5 +1,6 @@
 import React from "react";
 import style from "./home.module.css";
+import Registros from "../Registros/registros.js";
 
 import WbSunnyIcon from "@mui/icons-material/WbSunny";
 
@@ -18,10 +19,9 @@ function Home() {
     setBackgroundColor(!backgroundColor);
 
     !backgroundColor
-      ? (estilo = "linear-gradient(160deg, #730075, #006268)")
-      : (estilo = "linear-gradient(160deg, #EDBAEE, #88D4D9)");
+      ? (document.body.style.background = "linear-gradient(160deg, #730075, #006268)")
+      : (document.body.style.background = "linear-gradient(160deg, #EDBAEE, #88D4D9)");
 
-    document.body.style.background = estilo;
   };
 
   return (
@@ -50,7 +50,7 @@ function Home() {
       </div>
 
       <div className={style.body}>
-        <p>.</p>
+        <Registros theme={{valor: backgroundColor? false : true}}/>
       </div>
     </div>
   );

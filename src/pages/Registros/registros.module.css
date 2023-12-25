@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+
+.registros-main{
+    margin-top: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.registros{
+    display: grid;
+    grid-template-columns: 60% 40%;
+    width: 90vw;
+    height: 80vh;
+    border-radius: 15px;
+    justify-content: center;
+    align-items: center;
+}
+
+.registros-value{
+
+}
+
+.registro-information{
+    height: 90%;
+    width: 99.5%;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.register-input{
+    outline: none;
+    border: 0px;
+    background-color: #00000000;
+    margin-bottom: 15px;
+}
