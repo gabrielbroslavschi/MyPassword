@@ -19,10 +19,11 @@ function Registros({ theme }) {
           tema
             ? {
                 backgroundColor: "#fff",
+                transition: "0.6s"
               }
             : {
                 backgroundColor: "rgba(0, 0, 0, 0.63)",
-                border: "1px solid #fff",
+                transition: "0.6s"
               }
         }
       >

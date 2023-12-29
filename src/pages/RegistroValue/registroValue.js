@@ -1,9 +1,13 @@
 import React from "react";
 import style from "./registroValue.module.css";
+import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
 function RegistroValue({ theme }) {
   const [tema, setTema] = React.useState(theme.valor);
   const [edit, setEdit] = React.useState(false);
+  const [typePassword, setTypePssword] = React.useState("password");
+  const [viewPass, setViewPass] = React.useState(false);
 
   let lightInput = {
     borderBottom: "1px solid #00000055",
@@ -26,6 +30,12 @@ function RegistroValue({ theme }) {
   const handleChangeCancel = () => {
     handleChangeEdit();
   };
+
+  const handleViewPass = () => {
+    setViewPass(!viewPass);
+    !viewPass ? setTypePssword("text") : setTypePssword("password");
+  };
+
   return (
     <div
       className={style["registro-information"]}
@@ -34,14 +44,14 @@ function RegistroValue({ theme }) {
           ? {
               borderLeft: "1px solid #00000044",
               color: "#000",
+              transition: "0.6s"
             }
           : {
               borderLeft: "1px solid #fff",
               color: "#fff",
+              transition: "0.6s"
             }
       }
-      
-      
     >
       <p>Nome</p>
       <input
@@ -61,14 +71,26 @@ function RegistroValue({ theme }) {
         disabled={!edit}
       ></input>
 
-      <p>Senha</p>
-      <input
-        type="password"
-        className={style["register-input"]}
-        style={tema ? lightInput : darkInput}
-        placeholder="Senha"
-        disabled={!edit}
-      ></input>
+      <div>
+        <p>Senha</p>
+        <input
+          type={typePassword}
+          className={style["register-input"]}
+          id={style["password-input"]}
+          style={tema ? lightInput : darkInput}
+          placeholder="Senha"
+          disabled={!edit}
+          value="qaqweqweqwe"
+        ></input>
+
+        <button
+          onClick={handleViewPass}
+          className={style["password-button"]}
+          style={tema ? lightInput : darkInput}
+        >
+          {viewPass ? <VisibilityOffIcon /> : <RemoveRedEyeIcon />}
+        </button>
+      </div>
 
       <p>Telefone</p>
       <input
