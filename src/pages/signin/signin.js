@@ -35,7 +35,7 @@ function Signup() {
               type="text"
               name="username"
               id="username"
-              placeholder="Enter your username"
+              placeholder="Enter your email"
               value={username}
               onChange={handleChangeUsername}
             ></input>
