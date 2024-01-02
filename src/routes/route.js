@@ -12,7 +12,7 @@ function Rotas() {
         <Route path="/" element={<Signin />} />
         {/* <Route path="/signup/:userId/:token" element={<Signup />} /> */}
         <Route path="/signup" element={<Signup />} />
-        <Route path="/home/:username/:password" element={<Home />} />
+        <Route path="/home/:username/:email" element={<Home />} />
       </Routes>
     </Router>
   );

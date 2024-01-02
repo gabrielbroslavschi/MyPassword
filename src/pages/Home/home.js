@@ -7,7 +7,7 @@ import WbSunnyIcon from "@mui/icons-material/WbSunny";
 import { useNavigate, useParams } from "react-router-dom";
 
 function Home() {
-  const { username, password } = useParams();
+  const { username, email } = useParams();
 
   let [backgroundColor, setBackgroundColor] = React.useState();
 
@@ -40,7 +40,7 @@ function Home() {
               }
         }
       >
-        <div className={style.name}>Olá, {username}</div>
+        <div className={style.name}>Olá, {username.split(' ')[0]}</div>
         <div className={style.options}>
           <div>Minhas Senhas</div>
           <div>Meu Perfil</div>

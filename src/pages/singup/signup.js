@@ -4,6 +4,8 @@ import style from "./signup.module.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+import axios from "axios";
+
 function Signup() {
   const [email, setEmail] = React.useState("");
   const [name, setName] = React.useState("");
@@ -12,9 +14,10 @@ function Signup() {
 
   const [styleInputError, setStyleInputError] = React.useState(Object);
 
-  const [handleChangeStyleEmailError, setHandleChangeStyleEmailError] = React.useState({
-    display: "none",
-  });
+  const [handleChangeStyleEmailError, setHandleChangeStyleEmailError] =
+    React.useState({
+      display: "none",
+    });
   const [handleChangeStyleEmail, setHandleChangeStyleEmail] = React.useState({
     display: "none",
   });
@@ -25,15 +28,21 @@ function Signup() {
     display: "none",
   });
   const [handleChangeStyleConfirm, setHandleChangeStyleConfirm] =
-    React.useState({ display: "none" });
+    React.useState({
+      display: "none",
+    });
 
   const handleChangeEmail = (value) => {
     setHandleChangeStyleEmail({ display: "none" });
-    if(!validaEmail(value.target.value)){
-      setHandleChangeStyleEmailError({ display: "block", color: "red", marginTop: "0.6rem" });
-    }else{
+    if (!validaEmail(value.target.value)) {
+      setHandleChangeStyleEmailError({
+        display: "block",
+        color: "red",
+        marginTop: "0.6rem",
+      });
+    } else {
       setHandleChangeStyleEmailError({ display: "none" });
-    };
+    }
     setEmail(value.target.value);
   };
 
@@ -52,39 +61,84 @@ function Signup() {
     setConfirmPassword(value.target.value);
   };
 
-  const handleChangeConfirmRegister = () => {
+  const verifyCamps = () => {
+    let style = {
+      display: "block",
+      color: "red",
+      marginTop: "0.6rem",
+    };
+
     if (
       email === "" ||
       name === "" ||
       password === "" ||
       confirmPassword === ""
     ) {
-      notifyError();
-    }
+      if (email === "") {
+        setHandleChangeStyleEmail(style);
+      }
 
-    if (email === "") {
-      setHandleChangeStyleEmail({ display: "block", color: "red", marginTop: "0.6rem" });
-    }
+      if (name === "") {
+        setHandleChangeStyleName(style);
+      }
 
-    if (name === "") {
-      setHandleChangeStyleName({ display: "block", color: "red", marginTop: "0.6rem" });
-    }
+      if (password === "") {
+        setHandleChangeStylePass(style);
+      }
 
-    if (password === "") {
-      setHandleChangeStylePass({ display: "block", color: "red", marginTop: "0.6rem" });
-    }
-
-    if (confirmPassword === "") {
-      setHandleChangeStyleConfirm({ display: "block", color: "red", marginTop: "0.6rem" });
+      if (confirmPassword === "") {
+        setHandleChangeStyleConfirm(style);
+      }
+      notifyError(
+        "Your registration was not possible. Check that all fields are filled out correctly!"
+      );
+    } else {
+      handleChangeConfirmRegister();
     }
   };
 
-  const notifyError = () =>
-    toast.error(
-      "Your registration was not possible. Check that all fields are filled out correctly!"
-    );
-  const notifySucess = () => toast("Registered successfully!");
-  const notify = () => toast("Wow so easy !");
+  const clearFields = () => {
+    setEmail("");
+    setName("");
+    setConfirmPassword("");
+    setPassword("");
+  };
+
+  const validaEmailDataBase = async (emailVerify) => {
+    try {
+      const response = await axios.get(
+        `http://localhost:3001/usuarios?email=${emailVerify}`
+      );
+      const res = response.data.cadastrado;
+      return res;
+    } catch (err) {
+      return false;
+    }
+  };
+
+  const handleChangeConfirmRegister = async () => {
+    try {
+      let validacao = await validaEmailDataBase(email);
+      if (!validacao) {
+        let user = {
+          nome: name,
+          email: email,
+          senha: password,
+        };
+        // await axios.post("https:...usuarios", user);
+        await axios.post("http://localhost:3001/usuarios", user);
+        notifySucess("User registered successfully!");
+        clearFields();
+      } else {
+        notifyError("Email already registered!");
+      }
+    } catch (err) {
+      notifyError("Unable to register");
+    }
+  };
+
+  const notifyError = (text) => toast.error(text);
+  const notifySucess = (text) => toast.success(text);
 
   function validaEmail(email) {
     const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -186,12 +240,12 @@ function Signup() {
 
           <input
             className={style["button"]}
-            // type="submit"
+            type="button"
             value="Confirm"
-            onClick={handleChangeConfirmRegister}
+            onClick={verifyCamps}
           ></input>
 
-          <span>
+          <span className={style['span']}>
             Already have an account? <a href={`/`}>Sign in.</a>
           </span>
         </form>
@@ -200,14 +254,11 @@ function Signup() {
       <div className={style.container}>
         <div className={style["container-text"]}>
           <form>
-            <h2>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita
-              impedit, exercitationem quidem cum quasi reprehenderit asperiores
-              earum quae architecto delectus eius quos odio, excepturi unde
-              veniam repudiandae, recusandae perferendis voluptatibus voluptatum
-              ea sapiente. Laborum est praesentium necessitatibus sequi dicta
-              eligendi amet asperiores? Tenetur, labore sapiente? Cumque ad sint
-              magni voluptate.
+            <h2 className={style["texto-escrito"]}>
+              <p className={style["texto-escrito-p1"]}>Solução Para Senhas Esquecidas</p>
+              <p className={style["texto-escrito-p2"]}>Criou...</p>
+              <p className={style["texto-escrito-p3"]}>Salvou...</p>
+              <p className={style["h2-p-minimal"]}>Simples, Rápido e Seguro.</p>
             </h2>
           </form>
         </div>

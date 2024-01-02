@@ -81,6 +81,51 @@
   color: white;
 }
 
+h2 p {
+  font-size: 3rem;
+}
+
+@keyframes escreverTexto {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.texto-escrito,
+.texto-escrito-p1,
+.texto-escrito-p2,
+.texto-escrito-p3,
+.h2-p-minimal {
+  overflow: hidden;
+  white-space: nowrap;
+  animation: escreverTexto 1s steps(500) forwards;
+}
+
+.texto-escrito-p1 {
+  font-size: 2.5rem;
+}
+
+.texto-escrito-p2 {
+  width: 0;
+  animation-delay: 1s;
+  font-size: 2.5rem;
+}
+
+.texto-escrito-p3 {
+  width: 0;
+  animation-delay: 1.5s;
+  font-size: 2.5rem;
+}
+
+.h2-p-minimal {
+  font-size: 1rem;
+  animation-delay: 2s;
+  width: 0;
+}
+
 .required {
   color: red;
 }
@@ -97,6 +142,12 @@
   transition: all 0.3s ease;
   border: 0;
   text-align: center;
+}
+
+.span {
+  display: flex;
+  text-align: center;
+  justify-content: center;
 }
 
 @media (max-width: 1000px) {
