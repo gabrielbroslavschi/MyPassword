@@ -52,9 +52,14 @@ function Signup() {
       .post(`http://localhost:3001/registro`, login)
       .then(({ data }) => {
         if (data.cadastrado) {
-          const { nome, email } = data.usuario;
+          const { nome, email, senha } = data.usuario;
+          const token = data.token
+
+          const user = { nome, email, senha };
+          localStorage.setItem("token", token);
+          localStorage.setItem("user", JSON.stringify(user));
           e.preventDefault();
-          navigate(`/home/${nome}/${email}`);
+          navigate(`/home/perfil/${nome}`);
         } else {
           notifyError("User not found");
           notUser();

@@ -5,16 +5,21 @@ import Registros from "../Registros/registros.js";
 import WbSunnyIcon from "@mui/icons-material/WbSunny";
 
 import { useNavigate, useParams } from "react-router-dom";
+import ValiteRoute from "../../routes/ValidateRoute.js";
 
 function Home() {
-  const { username, email } = useParams();
+  const { username } = useParams();
 
   let [backgroundColor, setBackgroundColor] = React.useState();
 
-  const navigate = useNavigate();
+  // const  token  = localStorage.getItem("token");
+  
+
+    ValiteRoute(localStorage.getItem("token"))
+
+  
 
   const handleChangeBackground = () => {
-    let estilo = "";
 
     setBackgroundColor(!backgroundColor);
 
